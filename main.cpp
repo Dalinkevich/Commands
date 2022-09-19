@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QTranslator>
 
+//MARK: Test submission of changes in a cloned project
 
 int main(int argc, char *argv[])
 {
