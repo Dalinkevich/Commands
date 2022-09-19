@@ -6,5 +6,6 @@
         <file>resourses/AirplaneMode.jpeg</file>
         <file>resourses/bluetooth.jpg</file>
         <file>resourses/VPN.png</file>
+        <file>QmlLanguage_ru.qm</file>
     </qresource>
 </RCC>

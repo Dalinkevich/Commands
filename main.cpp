@@ -1,28 +1,19 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
-#include <QTranslator>
-
-//MARK: Test submission of changes in a cloned project
+#include <QtQml>
+#include "qmltranslator.h"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication app(argc, argv);
 
-    QGuiApplication app(argc, argv);
-
-
-   QTranslator translator;
-   translator.load("QmlLanguage_ru_RU");
-   qApp->installTranslator(&translator);
+    // Создаём объект для работы с переводами
+    QmlTranslator qmlTranslator;
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
+    //регистрируем его в качестве контекста в Qml слое
+    engine.rootContext()->setContextProperty("qmlTranslator", &qmlTranslator);
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();
 }

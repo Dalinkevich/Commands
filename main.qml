@@ -9,7 +9,7 @@ Window {
     minimumHeight: 450
     width: 640
     height: 480
-    title: qsTr("Commands")
+    title: qsTr("Commands") + qmlTranslator.emptyString
 
     ListModel {
         id: mainListModel
@@ -35,12 +35,16 @@ Window {
                 radius: 5
             }
 
-            model: ["ru", "en"]
+            model: ["en", "ru"]
+            // При изменении текста, инициализируем установку перевода через С++ слой
+            onCurrentTextChanged: {
+                qmlTranslator.setTranslation(comboBox.currentText)
+            }
         }
 
         Button {
             id: addButton
-            text: qsTr("Add Command")
+            text: qsTr("Add Command") + qmlTranslator.emptyString
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
@@ -102,7 +106,7 @@ Window {
                     anchors.right: comSwitch.left
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: qsTr(comDelegate.text)
+                    text: comDelegate.text
                 }
 
                 Switch {
@@ -140,7 +144,7 @@ Window {
 
     WindowTwo {
         id: secondWinow
-        title: qsTr("Adding commands")
+        title: qsTr("Adding commands") + qmlTranslator.emptyString
 
         onSignalExit: {
             secondWinow.close()

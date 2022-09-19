@@ -1,5 +1,6 @@
-QT += quick
-QT += quickwidgets
+TEMPLATE = app
+
+QT += qml quick widgets
 
 CONFIG += c++11
 
@@ -14,9 +15,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+
+
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        qmltranslator.cpp
+
+lupdate_only {
+    SOURCES += \
+        main.qml
+
+}
 
 TRANSLATIONS += QmlLanguage_ru.ts
 
@@ -33,5 +42,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+
 HEADERS += \
-    mainwindow.h
+    qmltranslator.h
+
+DISTFILES +=
+
+

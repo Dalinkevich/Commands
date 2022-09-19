@@ -32,7 +32,7 @@ Window {
 
     Button {
         id: saveButton
-        text: qsTr("Save")
+        text: qsTr("Save") + qmlTranslator.emptyString
         anchors.centerIn: parent
 
         background: Rectangle {
