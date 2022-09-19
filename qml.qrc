@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>WindowTwo.qml</file>
+        <file>resourses/photo.png</file>
+        <file>resourses/AirplaneMode.jpeg</file>
+        <file>resourses/bluetooth.jpg</file>
+        <file>resourses/VPN.png</file>
+    </qresource>
+</RCC>
