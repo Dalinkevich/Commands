@@ -109,7 +109,13 @@ Window {
                     anchors.right: comSwitch.left
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: comDelegate.text
+                    text: {
+                        if(comDelegate.text != "") {
+                            comDelegate.text
+                        } else {
+                            "Error. Enter the name of the command"
+                        }
+                    }
                 }
 
                 Switch {
