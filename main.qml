@@ -5,11 +5,14 @@ import QtQuick.Controls 2.1
 Window {
     id: mainWin
     visible: true
+    x: Screen.width / 2 - width / 2
+    y: Screen.height / 2 - height / 2
     minimumWidth: 600
     minimumHeight: 450
     width: 640
     height: 480
     title: qsTr("Commands") + qmlTranslator.emptyString
+
 
     ListModel {
         id: mainListModel

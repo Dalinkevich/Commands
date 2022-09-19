@@ -7,12 +7,16 @@ Window {
     signal signalExit
     width: mainWin.width
     height: mainWin.height
+
+    x: Screen.width / 2 - width / 2
+    y: Screen.height / 2 - height / 2
+
     minimumWidth: mainWin.minimumWidth
     minimumHeight: mainWin.minimumHeight
 
     TextField {
         id: imageTextField
-        placeholderText: "Image"
+        placeholderText: "Enter the url of the image"
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: nameTextField.top
@@ -22,7 +26,7 @@ Window {
 
     TextField {
         id: nameTextField
-        placeholderText: "Name"
+        placeholderText: "Enter the name of the command"
         width: parent.width / 2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: saveButton.top
@@ -48,7 +52,6 @@ Window {
             imageTextField.text = ""
             nameTextField.text = ""
             winTwo.signalExit()
-
         }
     }
 }
