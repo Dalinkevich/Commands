@@ -28,6 +28,15 @@ Item {
         color: "black"
     }
 
+    Label {
+        id: errorLabel
+        anchors.top: saveButton.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.margins: 10
+        text: ""
+        color: "red"
+    }
+
     Button {
         id: saveButton
         text: qsTr("Save") + qmlTranslator.emptyString
@@ -42,10 +51,19 @@ Item {
 
         onClicked: {
             console.log("save button was clicked")
-            comListModelId.append({ "_icon": imageTextField.text, "_text": nameTextField.text })
-            imageTextField.text = ""
-            nameTextField.text = ""
-            secondPage.signalExit()
+            if (imageTextField.text == "") {
+                saveButton.enabled = true
+                errorLabel.text = "You have not entered the Url of the image"
+            } else if (nameTextField.text == "") {
+                saveButton.enabled = true
+                errorLabel.text = "You didn't enter the command name"
+            } else {
+                comListModelId.append({ "_icon": imageTextField.text, "_text": nameTextField.text })
+                imageTextField.text = ""
+                nameTextField.text = ""
+                errorLabel.text = ""
+                secondPage.signalExit()
+            }
         }
     }
 }

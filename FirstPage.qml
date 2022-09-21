@@ -97,13 +97,7 @@ Item {
                     anchors.right: comSwitch.left
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    text: {
-                        if(comDelegate.text != "") {
-                            comDelegate.text
-                        } else {
-                            "Error. Enter the name of the command"
-                        }
-                    }
+                    text: comDelegate.text
                 }
 
                 Switch {
@@ -132,6 +126,7 @@ Item {
                         onTriggered: {
                             comSwitch.checked = false
                             console.log("Перекключатель сработал")
+
                         }
                     }
                 }
