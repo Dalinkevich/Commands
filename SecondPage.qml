@@ -37,6 +37,33 @@ Item {
         color: "red"
     }
 
+    ComboBox {
+        id: comboBox
+        anchors.verticalCenter: imageTextField.verticalCenter
+        anchors.left: imageTextField.right
+        anchors.right: parent.right
+        anchors.topMargin: 30
+        anchors.rightMargin: 10
+
+        background: Rectangle {
+            color: "coral"
+            border.color: "black"
+            border.width: 2
+            radius: 5
+        }
+
+        model: ["qrc:/resourses/AirplaneMode.jpeg",
+                "qrc:/resourses/bluetooth.jpg",
+                "qrc:/resourses/photo.png",
+                "qrc:/resourses/VPN.png"
+        ]
+
+        onCurrentTextChanged: {
+            imageTextField.text = currentText
+
+        }
+    }
+
     Button {
         id: saveButton
         text: qsTr("Save") + qmlTranslator.emptyString
@@ -51,13 +78,10 @@ Item {
 
         onClicked: {
             console.log("save button was clicked")
-            if (imageTextField.text == "") {
-                saveButton.enabled = true
-                errorLabel.text = "You have not entered the Url of the image"
-            } else if (nameTextField.text == "") {
+            if (nameTextField.text == "") {
                 saveButton.enabled = true
                 errorLabel.text = "You didn't enter the command name"
-            } else {
+                 } else {
                 comListModelId.append({ "_icon": imageTextField.text, "_text": nameTextField.text })
                 imageTextField.text = ""
                 nameTextField.text = ""
