@@ -1,11 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>WindowTwo.qml</file>
         <file>resourses/photo.png</file>
         <file>resourses/AirplaneMode.jpeg</file>
         <file>resourses/bluetooth.jpg</file>
         <file>resourses/VPN.png</file>
         <file>QmlLanguage_ru.qm</file>
+        <file>FirstPage.qml</file>
+        <file>SecondPage.qml</file>
     </qresource>
 </RCC>

@@ -1,18 +1,12 @@
 import QtQuick 2.11
-import QtQuick.Window 2.11
 import QtQuick.Controls 2.1
 
-Window {
-    id: winTwo
+
+Item {
+    id: secondPage
     signal signalExit
     width: mainWin.width
     height: mainWin.height
-
-    x: Screen.width / 2 - width / 2
-    y: Screen.height / 2 - height / 2
-
-    minimumWidth: mainWin.minimumWidth
-    minimumHeight: mainWin.minimumHeight
 
     TextField {
         id: imageTextField
@@ -48,10 +42,10 @@ Window {
 
         onClicked: {
             console.log("save button was clicked")
-            mainListModel.append({ "_icon": imageTextField.text, "_text": nameTextField.text })
+            comListModelId.append({ "_icon": imageTextField.text, "_text": nameTextField.text })
             imageTextField.text = ""
             nameTextField.text = ""
-            winTwo.signalExit()
+            secondPage.signalExit()
         }
     }
 }
